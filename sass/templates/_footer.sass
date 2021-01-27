@@ -1,0 +1,82 @@
+.footer
+  &__col
+    &
+      display: flex
+      justify-content: space-between
+      flex-wrap: wrap
+      margin-top: 96px
+      margin-bottom: 100px
+    &--link
+      color: $grey
+.title
+  margin: 0
+  font-style: normal
+  font-weight: bold
+  font-size: 12px
+  line-height: 15px
+  text-transform: uppercase
+.col1, .col2, .col3, .col4, .col5
+  display: flex
+  flex-direction: column
+  justify-content: space-between
+.col1
+  &
+    width: 260px
+    height: 132px
+  &__text
+    font-style: normal
+    font-weight: normal
+    font-size: 14px
+    line-height: 24px
+    margin-top: 16px
+    color: $grey
+.col2, .col3
+  padding-top: 5px
+  height: 172px
+.col3
+  margin-right: 1px
+  margin-left: 15px
+.col4
+  padding-top: 5px
+  margin-left: 50px
+  height: 134px
+.col5
+  &
+    width: 260px
+    height: 84px
+    margin-left: 15px
+    padding-top: 5px
+  &__text
+    font-style: normal
+    font-weight: normal
+    font-size: 14px
+    line-height: 24px
+    color: $grey
+    margin-top: 19px
+    margin-bottom: 23px
+  &__input
+    &
+      position: relative
+    &--email
+      border: 1px solid $silver
+      padding: 12px 78px 12px 12px
+      border-radius: 5px
+    &--submit
+      background: transparent
+      vertical-align: middle
+      position: absolute
+      right: -6px
+.copyright
+  &
+    border-top: 1px solid $silver
+  &__block
+    padding: 26px 0 26px 0
+    display: flex
+    justify-content: space-between
+  &__text
+    display: inline-block
+    vertical-align: middle
+    color: $grey
+.social
+  &__link:not(:last-child)
+    margin-right: 17px
