@@ -52,7 +52,7 @@ btnPlus.addEventListener('click', () => {
 });
 
 btnMinus.addEventListener('click', () => {
-
+  console.log('offClick');
 });
 
 // registration & login
