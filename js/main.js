@@ -43,16 +43,16 @@ document.addEventListener('click', (event) => {
 
 // adding guests
 
-const btnPlus = document.querySelector('.table__plus');
-const btnMinus = document.querySelector('.table__minus');
+const btnPlus = document.querySelectorAll('.table__plus');
+const btnMinus = document.querySelectorAll('.table__minus');
 let numberGuest = document.querySelector('.table__number');
 
 btnPlus.addEventListener('click', () => {
-  console.log('onClick');
+  
 });
 
 btnMinus.addEventListener('click', () => {
-  console.log('offClick');
+  
 });
 
 // registration & login
