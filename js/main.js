@@ -19,6 +19,20 @@ $(function() {
   });
 });
 
+// swiper-slide
+
+const swiper = new Swiper('.swiper-container', {
+
+  speed: 5000,
+  autoplay: {
+    delay: 10000,
+  },
+  effect: 'fade',
+  fadeEffect: {
+    crossFade: true
+  },
+});
+
 // dropdown guest
 
 const tableBedroom = document.querySelector('.table__bedroom');

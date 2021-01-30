@@ -7,6 +7,7 @@
   <link href="https://fonts.googleapis.com/css2?family=Quicksand:wght@400;700&display=swap" rel="stylesheet">
   <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;700&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="css/datepicker.css">
+  <link rel="stylesheet" href="https://unpkg.com/swiper/swiper-bundle.min.css">
   <link rel="stylesheet" href="css/style.css">
   <title>Toxin</title>
 </head>
@@ -22,8 +23,8 @@
           <a href="#" class="menu__nav">Новости</a>
           <a href="#" class="menu__nav">Соглашения<img src="img/icons/arrow_down.svg" class="menu__arrow" alt=""></a>
           <div class="buttons">
-            <a href="login_reg.html" class="button button__login">Войти</a>
-            <a href="login_reg.html" class="button button__reg">Зарегестрироваться</a>
+            <a href="login.html" class="button button__login">Войти</a>
+            <a href="reg.html" class="button button__reg">Зарегестрироваться</a>
           </div>
         </div>
         <!-- /.nav -->
@@ -34,79 +35,84 @@
   </div>
   <!-- /.header -->
 
-  <main>
-    <section class="hero">
-      <div class="background">
-        <img src="img/image_3.jpg" alt="">
-        <img src="img/image_2.jpg" alt="">
-        <img src="img/image.jpg" alt="">
-        <span class="background__text">Лучшие номера для вашей работы, отдыха и просто вдохновения</span>
-      </div>
-      <div class="container">
-        <div class="table">
-          <form action="#" class="table__form">
-            <h2 class="table__title">Найдём номера под ваши пожелания</h2>
-            <div class="table__data">
-              <div class="table__arrival">
-                <label for="arrival" class="table__label">Прибытие</label>
-                <input type="" class="datepicker-here arrival" placeholder="ДД.ММ.ГГГГ" readonly>
-                <img src="img/icons/arrow_down.svg" class="table__arrival--arrow" alt="">
-              </div>
-              <!-- /.table__arrival -->
-              <div class="table__departure">
-                <label for="departure" class="table__label">Выезд</label>
-                <input type="" class=".datepicker-here departure" placeholder="ДД.ММ.ГГГГ" readonly>
-                <img src="img/icons/arrow_down.svg" class="table__departure--arrow" alt="">
-              </div>
-              <!-- /.table__departure -->
-            </div>
-            <!-- /.table__data -->
-            <div class="table__guest">
-              <label for="guest" class="table__label">Гости</label>
-              <input id="countGuest" class="guest" placeholder="Сколько гостей" readonly>
-              <img src="img/icons/arrow_down.svg" class="table__guest--arrow" alt="">
-            </div>
-            <!-- /.table__guest -->
-            <div class="table__bedroom">
-              <div class="table__adult">
-                <p class="table__heading">Взрослые</p>
-                <div class="table__buttons">
-                  <button class="table__minus">-</button>
-                  <p id="men" class="table__number">0</p>
-                  <button class="table__plus">+</button>
-                </div>
-              </div>
-              <div class="table__children">
-                <p class="table__heading">Дети</p>
-                <div class="table__buttons">
-                  <button class="table__minus">-</button>
-                  <p id="child" class="table__number">0</p>
-                  <button class="table__plus">+</button>
-                </div>
-              </div>
-              <div class="table__baby">
-                <p class="table__heading">Младенцы</p>
-                <div class="table__buttons">
-                  <button class="table__minus">-</button>
-                  <p id="baby" class="table__number">0</p>
-                  <button class="table__plus">+</button>
-                </div>
-              </div>
-              <div class="button__interact">
-                <button class="button__interact--clear">Очистить</button>
-                <button class="button__interact--apply">Применить</button>
-              </div>
-            </div>
-            <button class="select">Подобрать номер<img src="img/icons/arrow_white.svg" class="select__arrow" alt=""></button>
-          </form>
-          <!-- /.table__form -->
+  <main class="hero">
+    <div class="background swiper-container">
+      <div class="swiper-wrapper">
+        <div class="swiper-slide hero__slide-1">
+          <p class="background__text">Лучшие номера для вашей работы, отдыха и просто вдохновения</p>
         </div>
-        <!-- /.table -->
+        <div class="swiper-slide hero__slide-2">
+          <p class="background__text">Лучшие номера для вашей работы, отдыха и просто вдохновения</p>
+        </div>
+        <div class="swiper-slide hero__slide-3">
+          <p class="background__text">Лучшие номера для вашей работы, отдыха и просто вдохновения</p>
+        </div>
       </div>
-      <!-- /.container -->
-    </section>
-    <!-- /.hero -->
+    </div>
+    <div class="container">
+      <div class="table">
+        <form action="#" class="table__form">
+          <h2 class="table__title">Найдём номера под ваши пожелания</h2>
+          <div class="table__data">
+            <div class="table__arrival">
+              <label for="arrival" class="table__label">Прибытие</label>
+              <input type="" class="datepicker-here arrival" placeholder="ДД.ММ.ГГГГ" readonly>
+              <img src="img/icons/arrow_down.svg" class="table__arrival--arrow" alt="">
+            </div>
+            <!-- /.table__arrival -->
+            <div class="table__departure">
+              <label for="departure" class="table__label">Выезд</label>
+              <input type="" class=".datepicker-here departure" placeholder="ДД.ММ.ГГГГ" readonly>
+              <img src="img/icons/arrow_down.svg" class="table__departure--arrow" alt="">
+            </div>
+            <!-- /.table__departure -->
+          </div>
+          <!-- /.table__data -->
+          <div class="table__guest">
+            <label for="guest" class="table__label">Гости</label>
+            <input id="countGuest" class="guest" placeholder="Сколько гостей" readonly>
+            <img src="img/icons/arrow_down.svg" class="table__guest--arrow" alt="">
+          </div>
+          <!-- /.table__guest -->
+          <div class="table__bedroom">
+            <div class="table__adult">
+              <p class="table__heading">Взрослые</p>
+              <div class="table__buttons">
+                <button class="table__minus">-</button>
+                <p id="men" class="table__number">0</p>
+                <button class="table__plus">+</button>
+              </div>
+            </div>
+            <div class="table__children">
+              <p class="table__heading">Дети</p>
+              <div class="table__buttons">
+                <button class="table__minus">-</button>
+                <p id="child" class="table__number">0</p>
+                <button class="table__plus">+</button>
+              </div>
+            </div>
+            <div class="table__baby">
+              <p class="table__heading">Младенцы</p>
+              <div class="table__buttons">
+                <button class="table__minus">-</button>
+                <p id="baby" class="table__number">0</p>
+                <button class="table__plus">+</button>
+              </div>
+            </div>
+            <div class="button__interact">
+              <button class="button__interact--clear">Очистить</button>
+              <button class="button__interact--apply">Применить</button>
+            </div>
+          </div>
+          <button class="select">Подобрать номер<img src="img/icons/arrow_white.svg" class="select__arrow" alt=""></button>
+        </form>
+        <!-- /.table__form -->
+      </div>
+      <!-- /.table -->
+    </div>
+    <!-- /.container -->
   </main>
+  <!-- /.hero -->
 
   <footer class="footer">
     <div class="container">
@@ -162,6 +168,7 @@
   <!-- /.footer -->
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
   <script src="js/datepicker.js"></script>
+  <script src="https://unpkg.com/swiper/swiper-bundle.min.js"></script>
   <script src="js/jquery.mask.min.js"></script>
   <script src="js/main.js"></script>
 </body>
