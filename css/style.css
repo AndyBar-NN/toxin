@@ -341,9 +341,7 @@ button {
   margin: 15px 0 14px 0; }
 
 .menu__nav {
-  color: rgba(31, 32, 65, 0.5); }
-
-.menu__nav:not(:last-child) {
+  color: rgba(31, 32, 65, 0.5);
   margin-right: 18px; }
 
 .menu__arrow {
@@ -360,16 +358,19 @@ button {
   line-height: 15px;
   text-transform: uppercase; }
 
+.button__login, .button__reg {
+  padding: 8px 18px;
+  margin-left: 18px;
+  background: #FFFFFF;
+  border: 2px solid #BC9CFF;
+  color: #BC9CFF; }
+
 .button__reg {
   background: linear-gradient(180deg, #BC9CFF 0%, #8BA4F9 100%);
   color: #FFFFFF; }
 
 .button__login {
-  padding: 8px 18px;
-  margin-right: 20px;
-  background: #FFFFFF;
-  border: 2px solid #BC9CFF;
-  color: #BC9CFF; }
+  margin-left: 0; }
 
 .hero {
   position: relative; }
@@ -481,8 +482,8 @@ button {
   bottom: 19px; }
 
 .table__bedroom {
-  visibility: hidden;
-  opacity: 0;
+  visibility: visible;
+  opacity: 1;
   width: 83.7%;
   border: 1px solid rgba(31, 32, 65, 0.5);
   border-top: none;
@@ -517,9 +518,9 @@ button {
   justify-content: flex-end; }
 
 .table__minus, .table__plus {
-  color: rgba(31, 32, 65, 0.25);
+  color: rgba(31, 32, 65, 0.5);
   background: #fff;
-  border: 1px solid rgba(31, 32, 65, 0.25);
+  border: 1px solid rgba(31, 32, 65, 0.5);
   border-radius: 25px;
   padding: 4px 10px;
   font-size: 17px; }
