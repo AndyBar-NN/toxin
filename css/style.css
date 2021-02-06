@@ -322,7 +322,9 @@ img {
   max-width: 100%; }
 
 input {
-  outline: none; }
+  outline: none;
+  padding: 13px;
+  width: 100%; }
 
 a {
   outline: none;
@@ -333,6 +335,92 @@ button {
   outline: none;
   border: none;
   cursor: pointer; }
+
+.arrow {
+  position: absolute;
+  right: 10px;
+  top: 12px; }
+
+.radio {
+  appearance: none;
+  position: absolute; }
+
+.radio:checked + .label::before {
+  border-color: #BC9CFF;
+  transition: all 0.3s ease; }
+
+.radio:checked + .label::after {
+  transition: all 0.3s ease;
+  opacity: 1; }
+
+.label {
+  display: flex;
+  align-items: center;
+  cursor: pointer; }
+
+.label__title {
+  font-weight: bold;
+  font-size: 12px;
+  line-height: 15px;
+  text-transform: uppercase;
+  color: #1F2041; }
+
+.label::before {
+  content: '';
+  width: 20px;
+  height: 20px;
+  margin-right: 10px;
+  border-radius: 10px;
+  border: 1px solid rgba(31, 32, 65, 0.25);
+  transition: all 0.3s ease; }
+
+.label::after {
+  content: '';
+  position: absolute;
+  left: 4px;
+  width: 12px;
+  height: 12px;
+  border-radius: 10px;
+  background: #BC9CFF;
+  transition: all 0.3s ease;
+  opacity: 0; }
+
+.switch {
+  appearance: none;
+  position: absolute; }
+
+.switch:checked + .mailing::before {
+  transition: all 0.3s ease;
+  border-color: #BC9CFF; }
+
+.switch:checked + .mailing::after {
+  transition: all 0.3s ease;
+  background: #BC9CFF;
+  left: 23px; }
+
+.mailing {
+  display: flex;
+  align-items: center;
+  cursor: pointer; }
+
+.mailing::before {
+  content: '';
+  width: 39px;
+  height: 20px;
+  margin-right: 10px;
+  border-radius: 10px;
+  border: 1px solid rgba(31, 32, 65, 0.25);
+  transition: all 0.3s ease; }
+
+.mailing::after {
+  content: '';
+  position: absolute;
+  left: 4px;
+  width: 12px;
+  height: 12px;
+  border-radius: 10px;
+  background: rgba(31, 32, 65, 0.25);
+  transition: all 0.3s ease; }
 
 .menu {
   display: flex;
@@ -389,7 +477,7 @@ button {
 
 .background__text {
   position: absolute;
-  width: 297px;
+  max-width: 297px;
   right: 19.1%;
   bottom: 1.15%;
   font-weight: normal;
@@ -413,7 +501,7 @@ button {
   margin: 19px 0 19px 0; }
 
 .table__form {
-  width: 380px;
+  max-width: 380px;
   background: #FFF;
   padding: 21px 30px 29px 30px;
   border: 1px solid rgba(0, 0, 0, 0.12);
@@ -461,7 +549,8 @@ button {
 .table__bedroom {
   visibility: visible;
   opacity: 1;
-  width: 83.7%;
+  max-width: 318px;
+  width: 100%;
   border: 1px solid rgba(31, 32, 65, 0.5);
   border-top: none;
   position: absolute;
@@ -542,14 +631,14 @@ button {
   color: #BC9CFF; }
 
 .arrival {
-  width: 150px;
+  max-width: 150px;
   padding: 11px 16px 15px 16px;
   border: 1px solid rgba(31, 32, 65, 0.25);
   border-radius: 4px;
   margin-top: 7px; }
 
 .departure {
-  width: 150px;
+  max-width: 150px;
   padding: 11px 16px 15px 16px;
   border: 1px solid rgba(31, 32, 65, 0.25);
   border-radius: 4px;
@@ -580,10 +669,11 @@ button {
 
 .main {
   background: url("../img/image_4.jpg") no-repeat center;
-  height: 703px; }
+  height: 703px;
+  display: flex; }
 
 .reg__form {
-  width: 380px;
+  max-width: 380px;
   background: #FFF;
   padding: 21px 30px 29px 30px;
   margin: auto;
@@ -600,11 +690,72 @@ button {
   letter-spacing: 0.07px;
   margin: 19px 0 19px 0; }
 
-.footer__col {
+.name, .surname {
+  border: 1px solid rgba(31, 32, 65, 0.25); }
+
+.surname {
+  margin-top: 10px; }
+
+.sex {
+  display: flex;
+  justify-content: start;
+  margin-top: 10px; }
+
+.sex__radio {
+  position: relative; }
+
+.sex__female {
+  margin-left: 20px; }
+
+.birthdate {
+  margin-top: 23px; }
+
+.birthdate__label {
+  font-weight: bold;
+  font-size: 12px;
+  line-height: 15px;
+  text-transform: uppercase;
+  color: #1F2041; }
+
+.birthdate__input {
+  margin-top: 5px;
+  margin-bottom: 19px;
+  padding-bottom: 11px; }
+
+.login {
+  margin-top: 5px;
+  padding-bottom: 11px; }
+
+.password {
+  margin-top: 10px;
+  padding-bottom: 11px; }
+
+.subscribe {
+  position: relative;
+  margin-top: 10px; }
+
+.pay {
+  position: relative;
+  width: 100%;
+  margin: 0;
+  margin-top: 23px;
+  padding: 13px; }
+
+.click {
+  padding: 12px 16px; }
+
+.click__login {
   display: flex;
   justify-content: space-between;
+  margin-top: 29px; }
+
+.click__button {
+  padding: 12px 24px; }
+
+.footer__col {
+  display: flex;
   flex-wrap: wrap;
-  margin-top: 96px;
+  margin-top: 97px;
   margin-bottom: 100px; }
 
 .footer__col--link {
@@ -639,19 +790,22 @@ button {
   padding-top: 5px;
   height: 172px; }
 
+.col2 {
+  margin-left: 40px; }
+
 .col3 {
   margin-right: 1px;
-  margin-left: 15px; }
+  margin-left: 57px; }
 
 .col4 {
   padding-top: 5px;
-  margin-left: 50px;
+  margin-left: 92px;
   height: 134px; }
 
 .col5 {
   width: 260px;
   height: 84px;
-  margin-left: 15px;
+  margin-left: 51px;
   padding-top: 5px; }
 
 .col5__text {
@@ -661,7 +815,7 @@ button {
   line-height: 24px;
   color: rgba(31, 32, 65, 0.5);
   margin-top: 19px;
-  margin-bottom: 23px; }
+  margin-bottom: 22px; }
 
 .col5__input {
   position: relative; }
@@ -675,7 +829,8 @@ button {
   background: transparent;
   vertical-align: middle;
   position: absolute;
-  right: -6px; }
+  right: -8px;
+  top: 3px; }
 
 .copyright {
   border-top: 1px solid rgba(31, 32, 65, 0.25); }
@@ -690,5 +845,8 @@ button {
   vertical-align: middle;
   color: rgba(31, 32, 65, 0.5); }
 
+.social {
+  margin-top: -3px; }
+
 .social__link:not(:last-child) {
-  margin-right: 17px; }
+  margin-right: 18px; }

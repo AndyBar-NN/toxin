@@ -10,6 +10,8 @@ img
   max-width: 100%
 input
   outline: none
+  padding: 13px
+  width: 100%
 a
   outline: none
   text-decoration: none
@@ -18,3 +20,89 @@ button
   outline: none
   border: none
   cursor: pointer
+.arrow
+  position: absolute
+  right: 10px
+  top: 12px
+
+.radio
+  &
+    appearance: none
+    position: absolute
+  &:checked +
+    .label
+      &::before
+        border-color: $purple
+        transition: all 0.3s ease
+  &:checked +
+    .label
+      &::after
+        transition: all 0.3s ease
+        opacity: 1
+.label
+  &
+    display: flex
+    align-items: center
+    cursor: pointer
+  &__title
+    font-weight: bold
+    font-size: 12px
+    line-height: 15px
+    text-transform: uppercase
+    color: $dark
+  &::before
+    content: ''
+    width: 20px
+    height: 20px
+    margin-right: 10px
+    border-radius: 10px
+    border: 1px solid $silver
+    transition: all 0.3s ease
+  &::after
+    content: ''
+    position: absolute
+    left: 4px
+    width: 12px
+    height: 12px
+    border-radius: 10px
+    background: $purple
+    transition: all 0.3s ease
+    opacity: 0
+
+.switch
+  &
+    appearance: none
+    position: absolute
+  &:checked +
+    .mailing
+      &::before
+        transition: all 0.3s ease
+        border-color: $purple
+  &:checked +
+    .mailing
+      &::after
+        transition: all 0.3s ease
+        background: $purple
+        left: 23px
+.mailing
+  &
+    display: flex
+    align-items: center
+    cursor: pointer
+  &::before
+    content: ''
+    width: 39px
+    height: 20px
+    margin-right: 10px
+    border-radius: 10px
+    border: 1px solid $silver
+    transition: all 0.3s ease
+  &::after
+    content: ''
+    position: absolute
+    left: 4px
+    width: 12px
+    height: 12px
+    border-radius: 10px
+    background: $silver
+    transition: all 0.3s ease

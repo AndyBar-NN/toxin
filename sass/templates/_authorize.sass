@@ -2,10 +2,10 @@
   &
     background: url('../img/image_4.jpg') no-repeat center
     height: 703px
-
+    display: flex
 .reg
   &__form
-    width: 380px
+    max-width: 380px
     background: #FFF
     padding: 21px 30px 29px 30px
     margin: auto
@@ -20,3 +20,53 @@
     line-height: 30px
     letter-spacing: 0.07px
     margin: 19px 0 19px 0
+.name, .surname
+  border: 1px solid $silver
+.surname
+  margin-top: 10px
+.sex
+  &
+    display: flex
+    justify-content: start
+    margin-top: 10px
+  &__radio
+    position: relative
+  &__female
+    margin-left: 20px
+.birthdate
+  &
+    margin-top: 23px
+  &__label
+    font-weight: bold
+    font-size: 12px
+    line-height: 15px
+    text-transform: uppercase
+    color: $dark
+  &__input
+    margin-top: 5px
+    margin-bottom: 19px
+    padding-bottom: 11px
+.login
+  margin-top: 5px
+  padding-bottom: 11px
+.password
+  margin-top: 10px
+  padding-bottom: 11px
+.subscribe
+  position: relative
+  margin-top: 10px
+.pay
+  position: relative
+  width: 100%
+  margin: 0
+  margin-top: 23px
+  padding: 13px
+.click
+  &
+    padding: 12px 16px
+  &__login
+    display: flex
+    justify-content: space-between
+    margin-top: 29px
+  &__button
+    padding: 12px 24px

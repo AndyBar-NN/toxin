@@ -22,7 +22,7 @@ $(function() {
 // swiper-slide
 
 const swiper = new Swiper('.swiper-container', {
-
+  // swiper.allowTouchMove: false,
   speed: 5000,
   autoplay: {
     delay: 10000,

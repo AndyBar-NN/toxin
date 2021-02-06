@@ -8,11 +8,11 @@
   <link href="https://fonts.googleapis.com/css2?family=Quicksand:wght@400;700&display=swap" rel="stylesheet">
   <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;700&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="css/style.css">
-  <title>Регистрация</title>
+  <title>Авторизация</title>
 </head>
 
 <body>
-  <div class="header">
+  <header class="header">
     <div class="container">
       <div class="menu menu__reg">
         <a href="index.html" class="menu__logo"><img src="img/icons/logo.svg" alt=""></a>
@@ -32,15 +32,25 @@
       <!-- /.menu -->
     </div>
     <!-- /.container -->
-  </div>
+  </header>
   <!-- /.header -->
 
   <main class="main">
     <div class="container">
       <div class="reg">
         <form action="#" class="reg__form">
-          <h2 class="reg__title">Регистрация аккаунта</h2>
-
+          <h2 class="reg__title">Войти</h2>
+          <div class="authorize">
+            <input type="email" class="login" placeholder="Email">
+            <input type="password" class="password" placeholder="Пароль">
+          </div>
+          <!-- /.authorize -->
+          <button class="button button__reg pay">Войти<img class="arrow" src="img/icons/arrow_white.svg"
+              alt=""></button>
+          <div class="click__login">
+            <p class="click__title">Нет аккаунта на Toxin?</p>
+            <a href="reg.html" class="click button__login button">Создать</a>
+          </div>
         </form>
       </div>
       <!-- /.reg -->
