@@ -328,7 +328,8 @@ input {
 
 a {
   outline: none;
-  text-decoration: none; }
+  text-decoration: none;
+  cursor: pointer; }
 
 button {
   padding: 10px 20px;
@@ -547,8 +548,8 @@ button {
   bottom: 19px; }
 
 .table__bedroom {
-  visibility: visible;
-  opacity: 1;
+  visibility: hidden;
+  opacity: 0;
   max-width: 318px;
   width: 100%;
   border: 1px solid rgba(31, 32, 65, 0.5);
@@ -667,19 +668,10 @@ button {
   position: absolute;
   right: 13px; }
 
-.main {
+.main__reg, .main__log {
   background: url("../img/image_4.jpg") no-repeat center;
   height: 703px;
-  display: flex; }
-
-.reg__form {
-  max-width: 380px;
-  background: #FFF;
-  padding: 21px 30px 29px 30px;
-  margin: auto;
-  border: 1px solid rgba(0, 0, 0, 0.12);
-  box-shadow: 0px 0px 25px rgba(0, 0, 0, 0.2);
-  border-radius: 4px; }
+  display: none; }
 
 .reg__title {
   font-family: 'Quicksand', sans-serif;
@@ -690,21 +682,30 @@ button {
   letter-spacing: 0.07px;
   margin: 19px 0 19px 0; }
 
+.form {
+  max-width: 380px;
+  background: #FFF;
+  padding: 21px 30px 29px 30px;
+  margin: auto;
+  border: 1px solid rgba(0, 0, 0, 0.12);
+  box-shadow: 0px 0px 25px rgba(0, 0, 0, 0.2);
+  border-radius: 4px; }
+
 .name, .surname {
   border: 1px solid rgba(31, 32, 65, 0.25); }
 
 .surname {
   margin-top: 10px; }
 
-.sex {
+.gender {
   display: flex;
   justify-content: start;
   margin-top: 10px; }
 
-.sex__radio {
+.gender__radio {
   position: relative; }
 
-.sex__female {
+.gender__female {
   margin-left: 20px; }
 
 .birthdate {

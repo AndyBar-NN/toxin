@@ -22,8 +22,8 @@
           <a href="#" class="menu__nav">Вакансии</a>
           <a href="#" class="menu__nav">Новости</a>
           <a href="#" class="menu__nav">Соглашения<img src="img/icons/arrow_down.svg" class="menu__arrow" alt=""></a>
-          <a href="login.html" class="button button__login">Войти</a>
-          <a href="reg.html" class="button button__reg">Зарегестрироваться</a>
+          <a id="logBtn" class="button button__login">Войти</a>
+          <a id="regBtn" class="button button__reg">Зарегестрироваться</a>
         </div>
         <!-- /.nav -->
       </div>
@@ -112,6 +112,76 @@
   </main>
   <!-- /.hero -->
 
+  <div class="main__reg">
+    <div class="container">
+      <div class="reg">
+        <form class="form form__reg">
+          <h2 class="reg__title">Регистрация аккаунта</h2>
+          <input class="name" type="text" placeholder="Имя" minlength="2">
+          <input class="surname " type="text" placeholder="Фамилия" minlength="2">
+          <div class="gender">
+            <div class="gender__radio">
+              <input type="radio" id="input__male" class="radio" name="gender">
+              <label for="input__male" class="label">Мужчина</label>
+            </div>
+            <div class="gender__radio gender__female">
+              <input type="radio" id="input__female" class="radio" name="gender">
+              <label for="input__female" class="label">Женщина</label>
+            </div>
+          </div>
+          <!-- /.gender -->
+          <div class="birthdate">
+            <label for="" class="birthdate__label label__title">Дата рождения</label>
+            <input type="" class="datepicker-here birthdate__input" placeholder="ДД.ММ.ГГГГ">
+          </div>
+          <div class="authorize">
+            <label class="label__title">Данные для входа в сервис</label>
+            <input class="login" type="email" placeholder="Email" minlength="3">
+            <input class="password" type="password" placeholder="Пароль" minlength="6">
+          </div>
+          <!-- /.authorize -->
+          <div class="subscribe">
+            <input class="switch" type="checkbox" id="subscribe__switch" name="switch">
+            <label class="mailing" for="subscribe__switch">Получать спецпредложения</label>
+          </div>
+          <button id="reg" class="button button__reg pay">Зарегестрироваться<img class="arrow"
+              src="img/icons/arrow_white.svg" alt=""></button>
+          <div class="click__login">
+            <p class="click__title">Уже есть аккаунт на Toxin</p>
+            <a id="logBtn" class="click__button button__login button">Войти</a>
+          </div>
+        </form>
+      </div>
+      <!-- /.reg -->
+    </div>
+    <!-- /.container -->
+  </div>
+  <!-- /.main -->
+
+  <div class="main__log">
+    <div class="container">
+      <div class="reg">
+        <form action="#" class="form form__log">
+          <h2 class="reg__title">Войти</h2>
+          <div class="authorize">
+            <input type="email" class="login" placeholder="Email" required>
+            <input type="password" class="password" placeholder="Пароль" required>
+          </div>
+          <!-- /.authorize -->
+          <button id="log" class="button button__reg pay">Войти<img class="arrow" src="img/icons/arrow_white.svg"
+              alt=""></button>
+          <div class="click__login">
+            <p class="click__title">Нет аккаунта на Toxin?</p>
+            <a id="regBtn" class="click button__login button">Создать</a>
+          </div>
+        </form>
+      </div>
+      <!-- /.reg -->
+    </div>
+    <!-- /.container -->
+  </div>
+  <!-- /.main -->
+
   <footer class="footer">
     <div class="container">
       <div class="footer__col">
@@ -168,6 +238,7 @@
   <script src="js/datepicker.js"></script>
   <script src="https://unpkg.com/swiper/swiper-bundle.min.js"></script>
   <script src="js/jquery.mask.min.js"></script>
+  <script src="js/autorize.js"></script>
   <script src="js/main.js"></script>
 </body>
 </html>
