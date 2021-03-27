@@ -1,0 +1,350 @@
+.main__sidebar, .main__room
+  display: none
+.container
+  &__sidebar
+    display: flex
+    justify-content: space-between
+.sidebar
+  &
+    margin-top: 30px
+    width: 266px
+  &__arrival
+    &
+      display: flex
+      flex-direction: column
+      position: relative
+      margin-bottom: 19.5px
+    &--dates                            // calendar
+      max-width: 500px
+      padding: 11px 16px 15px 16px
+      border: 1px solid $silver
+      border-radius: 4px
+      margin-top: 5px
+  &__guest
+    position: relative
+  &__conveniences
+    position: relative
+    margin-top: -4px
+  &__additional
+    visibility: hidden
+    opacity: 0
+    z-index: 2
+    transition: 0.3s
+  &__additional.active
+    visibility: visible
+    opacity: 1
+.table
+  &__elem
+    margin-top: 29px
+  &__text
+    font-size: 12px
+    line-height: 14px
+    color: $grey
+  &__range
+    &
+      display: flex
+      justify-content: space-between
+    &--value
+      font-size: 12px
+      line-height: 15px
+      text-align: right
+      text-transform: uppercase
+      color: $grey
+    &--input
+      margin-top: 23px
+      margin-bottom: 14px
+  &__checkbtn
+    &
+      margin-top: 29px
+      margin-bottom: 32px
+    &--label
+      margin-bottom: 17px
+.checkbtn
+  &__elem
+    margin-bottom: 10px
+    position: relative
+.availability
+  &
+    font-weight: bold
+    font-size: 14px
+    line-height: 18px
+  &__text
+    font-weight: normal
+    font-size: 12px
+    line-height: 14px
+    color: $grey
+  &__elem
+    margin-left: 30px
+.rooms
+  &
+    margin-left: 60px
+    margin-top: 10px
+  &__elem
+    width: 100%
+    max-width: 834px
+    display: flex
+    justify-content: space-between
+    flex-wrap: wrap
+  &__title
+    font-family: 'Quicksand', sans-serif
+    font-style: normal
+    font-weight: bold
+    font-size: 25px
+    line-height: 30px
+    word-spacing: 0.5px
+.room
+  &
+    width: 270px
+    height: 257.5px
+    margin-bottom: 20px
+    box-shadow: 0px 10px 20px rgba(31, 32, 65, 0.05)
+    border-radius: 4px
+    position: relative
+    cursor: pointer
+  &__left, &__right
+    position: absolute
+    width: 100%
+    height: 59%
+    top: 0
+  &__left
+    background: linear-gradient(90deg, rgba(0, 0, 0, 0.5) 0%, rgba(0, 0, 0, 0) 25%, rgba(255, 255, 255, 0) 100%)
+  &__right
+    background: linear-gradient(270deg, rgba(0, 0, 0, 0.5) 0%, rgba(0, 0, 0, 0) 25%, rgba(255, 255, 255, 0) 100%)
+  &__data
+    &
+      padding: 16px 16px 3px 21px
+      display: flex
+      align-items: baseline
+      justify-content: space-between
+    &--number
+      width: 58px
+      display: flex
+      align-items: baseline
+    &--cash
+      width: 131px
+    &--content
+      width: 230px
+      text-align: center
+      background: $silver
+      border: none
+      border-radius: 5px
+      height: 1px
+  &__number
+    &
+      font-family: 'Quicksand', sans-serif
+      font-style: normal
+      font-weight: bold
+      font-size: 19px
+      line-height: 24px
+      margin-left: 4px
+    &--big
+      font-family: 'Quicksand', sans-serif
+      font-style: normal
+      font-weight: bold
+      font-size: 24px
+      line-height: 30px
+      margin-left: 4px
+    &--elem
+      font-family: 'Quicksand', sans-serif
+      font-style: normal
+      font-weight: bold
+      font-size: 14px
+      line-height: 17px
+  &__luks
+    font-weight: bold
+    font-size: 12px
+    line-height: 15px
+    text-transform: uppercase
+    color: $purple
+    margin-left: 5px
+  &__cash
+    font-weight: bold
+    font-size: 14px
+    line-height: 18px
+    color: $grey
+    margin-left: 30px
+  &__day
+    font-size: 12px
+    line-height: 18px
+    color: $grey
+  &__rating
+    &
+      padding: 3px 20px 0px 22px
+      display: flex
+      justify-content: space-between
+    &--star
+      display: flex
+      justify-content: space-between
+      width: 117px
+    &--comment
+      display: flex
+      justify-content: space-between
+      margin-top: 2px
+  &__comment
+    &
+      font-weight: bold
+      font-size: 14px
+      line-height: 18px
+      color: $grey
+    &--elem
+      font-size: 14px
+      line-height: 18px
+      margin-left: 3px
+      color: $grey
+  &__background                                   // selected
+    &
+      display: flex
+      justify-content: center
+    &--col
+      display: flex
+      flex-direction: column
+    &--small
+      max-width: 461px
+      max-height: 242.5px
+  &__description
+    margin-top: 54px
+    display: flex
+    justify-content: space-between
+  &__title
+    &
+      display: flex
+      font-weight: normal
+      font-size: 14px
+      line-height: 24px
+    &--bold
+      display: block
+      font-weight: bold
+      font-size: 14px
+      line-height: 24px
+    &--table
+      justify-content: space-between
+    &--height
+      line-height: 19px
+      margin-top: 3px
+  &__fees
+    display: flex
+    justify-content: space-between
+    align-items: baseline
+    margin-top: 18px
+    margin-bottom: 20px
+.rules
+  display: flex
+  margin-top: 15px
+.description
+  &__col1
+    max-width: 672px
+    display: flex
+    // justify-content: space-between
+    flex-wrap: wrap
+  &__img
+    width: 48px
+    height: 48px
+    padding: 4px
+  &__number
+    width: 290px
+  &__title, &__rules--title
+    font-family: 'Quicksand', sans-serif
+    font-style: normal
+    font-weight: bold
+    font-size: 20px
+    line-height: 24px
+  &__comfort
+    display: flex
+    margin-top: 19px
+    margin-bottom: 41px
+  &__cosiness
+    display: flex
+  &__block
+    margin-left: 10px
+  &__impression
+    margin-left: 71px
+  &__elem
+    width: 311px
+    display: flex
+    justify-content: space-between
+    margin-top: 19px
+  &__text
+    &
+      display: flex
+      flex-direction: column
+      justify-content: flex-end
+    &--elem
+      display: flex
+      align-items: center
+  &__orange, &__green, &__purple, &__black, &__grey
+    width: 10px
+    height: 10px
+    border-radius: 5px
+    background: linear-gradient(180deg, #FFE39C 0%, #FFBA9C 100%)
+    margin-right: 5px
+  &__green
+    background: linear-gradient(180deg, #6FCF97 0%, #66D2EA 100%)
+  &__purple
+    background: linear-gradient(180deg, #BC9CFF 0%, #8BA4F9 100%)
+  &__black
+    background: linear-gradient(180deg, #919191 0%, #3D4975 100%)
+  &__grey
+    background: $silver
+    margin-right: 10px
+  &__feedback
+    margin-top: 17px
+  &__avatar
+    border: 2px solid white
+    border-radius: 50%
+    object-fit: cover
+  &__like
+    margin-left: 3px
+    margin-right: 4px
+  &__men
+    display: flex
+    margin-top: 20px
+  &__women
+    display: flex
+    margin-top: 22px
+  &__input
+    width: 40px
+    font-size: 8px
+    line-height: 12px
+    text-align: center
+    padding: 3px 0 3px 10px
+    border: 1px solid $silver
+    border-radius: 25px
+    cursor: pointer
+    background: url('../img/icons/heart_grey.svg') no-repeat
+    background-position: 15%
+  &__input.active
+    border: 1px solid $purple
+    color: $purple
+    background: url('../img/icons/heart.svg') no-repeat
+    background-position: 15%
+  &__comment
+    &
+      display: flex
+      margin-top: 11px
+    &--rules
+      margin-top: 18px
+  &__rules
+    &--title
+      margin-left: 20px
+      margin-bottom: 18px
+    &--elem
+      display: flex
+      width: 300px
+    &--text
+      display: flex
+      align-items: baseline
+      margin-bottom: 10px
+  &__cancel
+    margin-left: 61px
+  &__table                       // form
+    margin-top: 16px
+  &__fees
+    &
+      margin-top: 16px
+      margin-bottom: 28px
+    &--elem
+      margin-top: 10px
+      display: flex
+      justify-content: space-between
+  &__search
+    margin-top: 19px

@@ -1,17 +1,31 @@
 // calendar
 
-$('.datepicker-here').datepicker({
-  minDate: new Date(),
-});
-$('.arrival').datepicker({
-  onSelect: function (fd, d, picker) {
-    $(".arrival").val(fd.split("-")[0]);
-    $(".departure").val(fd.split("-")[1]);
+var now = new Date();
+var endDate = new Date(now.getTime() + 365 * 24 * 60 * 60 * 1000);
+var $start = $('#start'),
+    $end = $('#end');
+var $datepickers = $('.datepickers');
+
+$datepickers.datepicker({
+  minDate: now,
+  maxDate: endDate,
+  multipleDatesSeparator: " - ",
+  range: true,
+  onSelect: function (fd, date) {
+    $end.data('datepicker')
+      .update('selectedDates', $start.data('datepicker').selectedDates);
+    var start = fd.split('-')[0];
+    var end = fd.split('-')[1];
+    if (end) {
+      $start.val(start);
+      $end.val(end);
+    } else {
+      $end.val('');
+    }
   }
 });
-$(function() {
-  $('.datepicker-here').datepicker({
-    minDate: new Date(),
+$(function () {
+  $('.datepickers').datepicker({
     todayButton: true,
     language: {
       today: "Применить",
@@ -22,10 +36,10 @@ $(function() {
 // swiper-slide
 
 const swiper = new Swiper('.swiper-container', {
-  // swiper.allowTouchMove: false,
+  allowTouchMove: false,
   speed: 5000,
   autoplay: {
-    delay: 10000,
+    delay: 15000,
   },
   effect: 'fade',
   fadeEffect: {
@@ -35,13 +49,17 @@ const swiper = new Swiper('.swiper-container', {
 
 // dropdown guest
 
-const tableBedroom = document.querySelector('.table__bedroom');
-const guest = document.querySelector('.guest');
-const btnPlus = document.querySelectorAll('.table__plus');
-const btnMinus = document.querySelectorAll('.table__minus');
-let countNumber = document.querySelector('.table__number');
-let countGuest = document.querySelector('#countGuest');
-
+const tableRoom = document.querySelector('.table__room'),
+      tableCompact = document.querySelector('.table__compact'),
+      tableBedroom = document.querySelector('.table__bedroom'),
+      clearBtn = document.querySelector('#clear'),
+      hideBtn = document.querySelector('#hide'),
+      searchRoom = document.querySelector('.search'),
+      btnPlus = document.querySelectorAll('.table__plus'),
+      btnMinus = document.querySelectorAll('.table__minus');
+let countGuest = document.querySelector('#countGuest'),
+    roomGuest = document.querySelector('#roomGuest'),
+    bedroomGuest = document.querySelector('#bedroomGuest');
 let men = document.querySelector('#men'),
     child = document.querySelector('#child'),
     baby = document.querySelector('#baby');
@@ -50,188 +68,129 @@ let mens = 0,
     childrens = 0,
     babies = 0;
 
-function toggleMenu() {
+function toggleRoom() {
+  tableRoom.classList.toggle('active');
+}
+function toggleCompact() {
+  tableCompact.classList.toggle('active');
+}
+function toggleBedroom() {
   tableBedroom.classList.toggle('active');
 }
 
-guest.addEventListener('click', toggleMenu);
-
-document.addEventListener('click', (e) => {
-  const menuElem = e.target == tableBedroom || tableBedroom.contains(e.target);
-  const inputBtn = e.target == guest;
-  const menuToggle = tableBedroom.classList.contains('active');
-
+function hideElem(e) {
+  const menuElem = e.target == tableRoom || tableRoom.contains(e.target);
+  const inputBtn = e.target == countGuest;
+  const menuToggle = tableRoom.classList.contains('active');
+  const menuCompact = e.target == tableCompact || tableCompact.contains(e.target);
+  const inputRoom = e.target == roomGuest;
+  const menuRoom = tableCompact.classList.contains('active');
+  const menuBedroom = e.target == tableBedroom || tableBedroom.contains(e.target);
+  const inputBedroom = e.target == bedroomGuest;
+  const menuBedroomElem = tableBedroom.classList.contains('active');
   if (!menuElem && !inputBtn && menuToggle) {
-    toggleMenu();
+    toggleRoom();
+  } else if (!menuCompact && !inputRoom && menuRoom) {
+    toggleCompact();
+  } else if (!menuBedroom && !inputBedroom && menuBedroomElem) {
+    toggleBedroom();
   }
-});
+}
+
+countGuest.addEventListener('click', toggleRoom);
+roomGuest.addEventListener('click', toggleCompact);
+bedroomGuest.addEventListener('click', toggleBedroom);
+document.addEventListener('click', hideElem);
 
 // adding guests
 
+function itemGuest() {
+  countGuest.value = mens + childrens + babies;
+  if (countGuest.value == 1) {
+    countGuest.value += ' гость';
+  } else if (countGuest.value > 1 && countGuest.value <= 4) {
+    countGuest.value += ' гостя';
+  } else if (countGuest.value > 4) {
+    countGuest.value += ' гостей';
+  } else {
+    countGuest.value = '';
+  }
+}
+
 btnPlus[0].addEventListener('click', (e) => {
   e.preventDefault();
-
   if (mens >= 4) {
-    btnPlus[0].style.opacity = '.25';
     return mens;
   }
-
-  if (mens <= 3) {
-    btnPlus[0].style.opacity = '';
-    btnMinus[0].style.opacity = '';
-  }
-
   mens++;
   men.textContent = mens;
-  countGuest.value = mens + childrens + babies;
-
-  if (countGuest.value == 1) {
-    countGuest.value = mens + childrens + babies + ' гость';
-  } else if (countGuest.value > 1 && countGuest.value <= 4) {
-    countGuest.value = mens + childrens + babies + ' гостя';
-  } else {
-    countGuest.value = mens + childrens + babies + ' гостей';
-  }
+  itemGuest();
 });
 
 btnMinus[0].addEventListener('click', (e) => {
   e.preventDefault();
-
   if (mens <= 0) {
-    btnMinus[0].style.opacity = '.25';
     return mens;
   }
-
-  if (mens >= 1) {
-    btnMinus[0].style.opacity = '';
-    btnPlus[0].style.opacity = '';
-  }
-
   mens--;
   men.textContent = mens;
-  countGuest.value = mens + childrens + babies;
-
-  if (countGuest.value == 1) {
-    countGuest.value = mens + childrens + babies + ' гость';
-  } else if (countGuest.value > 1 && countGuest.value <= 4) {
-    countGuest.value = mens + childrens + babies + ' гостя';
-  } else if (countGuest.value > 4) {
-    countGuest.value = mens + childrens + babies + ' гостей';
-  } else {
-    countGuest.value = '';
-  }
+  itemGuest();
 });
 
 btnPlus[1].addEventListener('click', (e) => {
   e.preventDefault();
-
   if (childrens >= 2) {
-    btnPlus[1].style.opacity = '.25';
     return childrens;
   }
-
-  if (childrens <= 1) {
-    btnPlus[1].style.opacity = '';
-    btnMinus[1].style.opacity = '';
-  }
-
   childrens++;
   child.textContent = childrens;
-  countGuest.value = mens + childrens + babies;
-
-  if (countGuest.value == 1) {
-    countGuest.value = mens + childrens + babies + ' гость';
-  } else if (countGuest.value > 1 && countGuest.value <= 4) {
-    countGuest.value = mens + childrens + babies + ' гостя';
-  } else if (countGuest.value > 4) {
-    countGuest.value = mens + childrens + babies + ' гостей';
-  } else {
-    countGuest.value = '';
-  }
+  itemGuest();
 });
 
 btnMinus[1].addEventListener('click', (e) => {
   e.preventDefault();
-
   if (childrens <= 0) {
-    btnMinus[1].style.opacity = '.25';
     return childrens;
   }
-
-  if (childrens >= 1) {
-    btnMinus[1].style.opacity = '';
-    btnPlus[1].style.opacity = '';
-  }
-
   childrens--;
   child.textContent = childrens;
-  countGuest.value = mens + childrens + babies;
-
-  if (countGuest.value == 1) {
-    countGuest.value = mens + childrens + babies + ' гость';
-  } else if (countGuest.value > 1 && countGuest.value <= 4) {
-    countGuest.value = mens + childrens + babies + ' гостя';
-  } else if (countGuest.value > 4) {
-    countGuest.value = mens + childrens + babies + ' гостей';
-  } else {
-    countGuest.value = '';
-  }
+  itemGuest();
 });
 
 btnPlus[2].addEventListener('click', (e) => {
   e.preventDefault();
-
   if (babies >= 2) {
-    btnPlus[2].style.opacity = '.25';
     return babies;
   }
-
-  if (babies <= 1) {
-    btnPlus[2].style.opacity = '';
-    btnMinus[2].style.opacity = '';
-  }
-
   babies++;
   baby.textContent = babies;
-  countGuest.value = mens + childrens + babies;
-
-  if (countGuest.value == 1) {
-    countGuest.value = mens + childrens + babies + ' гость';
-  } else if (countGuest.value > 1 && countGuest.value <= 4) {
-    countGuest.value = mens + childrens + babies + ' гостя';
-  } else if (countGuest.value > 4) {
-    countGuest.value = mens + childrens + babies + ' гостей';
-  } else {
-    countGuest.value = '';
-  }
+  itemGuest();
 });
 
 btnMinus[2].addEventListener('click', (e) => {
   e.preventDefault();
-
   if (babies <= 0) {
-    btnMinus[2].style.opacity = '.25';
     return babies;
   }
-
-  if (babies >= 1) {
-    btnMinus[2].style.opacity = '';
-    btnPlus[2].style.opacity = '';
-  }
-
   babies--;
   baby.textContent = babies;
-  countGuest.value = mens + childrens + babies;
-
-  if (countGuest.value == 1) {
-    countGuest.value = mens + childrens + babies + ' гость';
-  } else if (countGuest.value > 1 && countGuest.value <= 4) {
-    countGuest.value = mens + childrens + babies + ' гостя';
-  } else if (countGuest.value > 4) {
-    countGuest.value = mens + childrens + babies + ' гостей';
-  } else {
-    countGuest.value = '';
-  }
+  itemGuest();
 });
 
-// registration & login
+// clear & hide & search
+
+clearBtn.addEventListener('click', (e) => {
+  e.preventDefault();
+  countGuest.value = '';
+  mens = 0;
+  childrens = 0;
+  babies = 0;
+  men.textContent = 0;
+  child.textContent = 0;
+  baby.textContent = 0;
+});
+
+hideBtn.addEventListener('click', (e) => {
+  e.preventDefault();
+  toggleRoom();
+});
