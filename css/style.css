@@ -502,6 +502,9 @@ button {
   font-weight: bold;
   margin-right: 9px; }
 
+.menu__name.active {
+  display: inline-flex; }
+
 .menu__exit, .menu__edit {
   width: 30px;
   height: 30px;
@@ -879,6 +882,9 @@ button {
 .main__sidebar, .main__room {
   display: none; }
 
+.main__sidebar {
+  margin-bottom: 165px; }
+
 .container__sidebar {
   display: flex;
   justify-content: space-between; }
@@ -946,6 +952,9 @@ button {
 
 .table__checkbtn--label {
   margin-bottom: 17px; }
+
+.table__checkbtn--arrow {
+  margin-left: 30px; }
 
 .checkbtn__elem {
   margin-bottom: 10px;

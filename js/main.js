@@ -1,3 +1,5 @@
+import "./module/autorize.js";
+import "./module/rooms.js";
 // calendar
 
 var now = new Date();
@@ -52,14 +54,15 @@ const swiper = new Swiper('.swiper-container', {
 const tableRoom = document.querySelector('.table__room'),
       tableCompact = document.querySelector('.table__compact'),
       tableBedroom = document.querySelector('.table__bedroom'),
+      tableCheckbtn = document.querySelector('.sidebar__additional'),
       clearBtn = document.querySelector('#clear'),
       hideBtn = document.querySelector('#hide'),
-      searchRoom = document.querySelector('.search'),
       btnPlus = document.querySelectorAll('.table__plus'),
       btnMinus = document.querySelectorAll('.table__minus');
 let countGuest = document.querySelector('#countGuest'),
     roomGuest = document.querySelector('#roomGuest'),
-    bedroomGuest = document.querySelector('#bedroomGuest');
+    bedroomGuest = document.querySelector('#bedroomGuest'),
+    checkBtn = document.querySelector('#checkBtn');
 let men = document.querySelector('#men'),
     child = document.querySelector('#child'),
     baby = document.querySelector('#baby');
@@ -76,6 +79,9 @@ function toggleCompact() {
 }
 function toggleBedroom() {
   tableBedroom.classList.toggle('active');
+}
+function toggleCheckbtn() {
+  tableCheckbtn.classList.toggle('active');
 }
 
 function hideElem(e) {
@@ -100,6 +106,7 @@ function hideElem(e) {
 countGuest.addEventListener('click', toggleRoom);
 roomGuest.addEventListener('click', toggleCompact);
 bedroomGuest.addEventListener('click', toggleBedroom);
+checkBtn.addEventListener('click', toggleCheckbtn);
 document.addEventListener('click', hideElem);
 
 // adding guests
@@ -194,3 +201,5 @@ hideBtn.addEventListener('click', (e) => {
   e.preventDefault();
   toggleRoom();
 });
+
+//

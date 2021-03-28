@@ -29,9 +29,7 @@
 
   <script src="https://unpkg.com/swiper/swiper-bundle.min.js" defer></script>
   <script src="js/jquery.mask.min.js" defer></script>
-  <script src="js/autorize.js" defer></script>
-  <script src="js/rooms.js" defer></script>
-  <script src="js/main.js" defer></script>
+  <script src="js/main.js" type="module" defer></script>
 </head>
 <body>
   <header class="header">
@@ -48,11 +46,13 @@
             <a id="logBtn" class="button button__login">Войти</a>
             <a id="regBtn" class="button button__reg">Зарегестрироваться</a>
           </div>
+
           <div class="menu__name">
             <span class="menu__name--login">Andy</span>
             <img src="img/icons/edit.svg" class="menu__edit"></img>
             <img src="img/icons/close.svg" class="menu__exit"></img>
           </div>
+
           <form class="edit__form">
             <h2 class="edit__title">Редактирование</h2>
             <input class="edit__name" type="text" placeholder="Логин" minlength="2">
@@ -279,7 +279,7 @@
         </div>
         <!-- /.table__bedroom -->
         <div class="table__checkbtn">
-          <h2 class="table__label table__checkbtn--label">Дополнительные удобства</h2>
+          <h2 id="checkBtn" class="table__label table__checkbtn--label">Дополнительные удобства<img src="img/icons/arrow_down.svg" class="table__checkbtn--arrow" alt=""></h2>
           <div class="sidebar__additional">
             <div class="checkbtn__elem">
               <input type="checkbox" id="checkbtn__breakfast" class="checkbtn" name="approval">

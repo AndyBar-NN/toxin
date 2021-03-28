@@ -13,35 +13,33 @@ firebase.initializeApp(firebaseConfig);
 // reg
 const validEmail = /^\w+@\w+\.\w{2,}$/;
 const logBtn = document.querySelectorAll('#logBtn'),
-      regBtn = document.querySelectorAll('#regBtn'),
-      getRooms = document.querySelector('#getRooms'),
-      mainSidebar = document.querySelector('.main__sidebar'),
-      footerRoom = document.querySelector('.footer__room'),
-      loginInput = document.querySelector('.login'),
-      passwordInput = document.querySelector('.password'),
-      formReg = document.querySelector('.form__reg'),
-      formLog = document.querySelector('.form__log'),
-      mainReg = document.querySelector('.main__reg'),
-      mainLog = document.querySelector('.main__log'),
-      roomsElem = document.querySelector('.rooms__elem'),
-      mainRoom = document.querySelector('.main__room'),
-      hero = document.querySelector('.hero'),
-      logRegBtn = document.querySelector('.buttons'),
-      logo = document.querySelectorAll('#logo'),
-      loginName = document.querySelector('.menu__name'),
-      editBtn = document.querySelector('.menu__edit'),
-      editForm = document.querySelector('.edit__form'),
-      editName = document.querySelector('.edit__name'),
-      exitElem = document.querySelector('.menu__exit'),
-      nameElem = document.querySelector('.menu__name--login');
-const listUsers = [
-        {
-          email: 'hrusha@mail.com',
-          password: 'qwerty',
-          displayName: 'hrusha',
-          surname: 'pig'
-        }
-      ];
+  regBtn = document.querySelectorAll('#regBtn'),
+  getRooms = document.querySelector('#getRooms'),
+  mainSidebar = document.querySelector('.main__sidebar'),
+  footerRoom = document.querySelector('.footer__room'),
+  loginInput = document.querySelector('.login'),
+  passwordInput = document.querySelector('.password'),
+  formReg = document.querySelector('.form__reg'),
+  formLog = document.querySelector('.form__log'),
+  mainReg = document.querySelector('.main__reg'),
+  mainLog = document.querySelector('.main__log'),
+  roomsElem = document.querySelector('.rooms__elem'),
+  mainRoom = document.querySelector('.main__room'),
+  hero = document.querySelector('.hero'),
+  logRegBtn = document.querySelector('.buttons'),
+  logo = document.querySelectorAll('#logo'),
+  loginName = document.querySelector('.menu__name'),
+  editBtn = document.querySelector('.menu__edit'),
+  editForm = document.querySelector('.edit__form'),
+  editName = document.querySelector('.edit__name'),
+  exitElem = document.querySelector('.menu__exit'),
+  nameElem = document.querySelector('.menu__name--login');
+const listUsers = [{
+  email: 'hrusha@mail.com',
+  password: 'qwerty',
+  displayName: 'hrusha',
+  surname: 'pig'
+}];
 
 const setUsers = {
   user: null,
@@ -127,10 +125,10 @@ const toggleAuthDom = () => {
   console.log('user: ', user);
   if (user) {
     logRegBtn.style.display = 'none';
-    loginName.style.display = 'inline-flex';
+    loginName.classList.add('active');
     nameElem.textContent = user.displayName;
   } else {
-    loginName.style.display = 'none';
+    loginName.classList.remove('active');
     logRegBtn.style.display = 'inline';
   }
 };
@@ -143,8 +141,16 @@ function openHero() {
   mainLog.style.display = 'none';
   mainReg.style.display = 'none';
   mainSidebar.style.display = 'none';
+  mainRoom.style.display = 'none';
   footerRoom.style.cssText = '';
   hero.style.display = 'block';
+}
+
+function toggleElem() {
+  hero.style.display = 'none';
+  mainSidebar.style.display = 'none';
+  mainRoom.style.display = 'none';
+  footerRoom.style.cssText = '';
 }
 
 logo.forEach(btn => {
@@ -153,7 +159,7 @@ logo.forEach(btn => {
 
 logBtn.forEach(btn => {
   btn.addEventListener('click', () => {
-    hero.style.display = 'none';
+    toggleElem();
     if (mainReg) {
       mainReg.style.display = 'none';
     }
@@ -163,19 +169,12 @@ logBtn.forEach(btn => {
 
 regBtn.forEach(btn => {
   btn.addEventListener('click', () => {
-    hero.style.display = 'none';
+    toggleElem();
     if (mainLog) {
       mainLog.style.display = 'none';
     }
     mainReg.style.display = 'flex';
   });
-});
-
-getRooms.addEventListener('click', (e) => {
-  e.preventDefault();
-  hero.style.display = 'none';
-  mainSidebar.style.display = 'block';
-  footerRoom.style.cssText = 'margin-top: 63px; border-top: 1px solid rgba(31, 32, 65, 0.25)';
 });
 
 // room
@@ -184,6 +183,17 @@ roomsElem.addEventListener('click', (e) => {
   if (e.target.tagName === 'DIV') {
     mainSidebar.style.display = 'none';
     mainRoom.style.display = 'block';
+  }
+});
+
+getRooms.addEventListener('click', (e) => {
+  e.preventDefault();
+  if (!loginName.classList.contains('active')) {
+    alert('Пожалуйста войдите в аккаунт');
+  } else {
+    hero.style.display = 'none';
+    mainSidebar.style.display = 'block';
+    footerRoom.style.cssText = 'margin-top: 62px; border-top: 1px solid rgba(31, 32, 65, 0.25)';
   }
 });
 
@@ -225,6 +235,7 @@ const init = () => {
   exitElem.addEventListener('click', (e) => {
     e.preventDefault();
     setUsers.logOut();
+    openHero();
   });
 };
 
