@@ -1,5 +1,3 @@
-.main__sidebar, .main__room
-  display: none
 .main__sidebar
   margin-bottom: 165px
 .container
@@ -25,16 +23,17 @@
   &__guest
     position: relative
   &__conveniences
-    position: relative
-    margin-top: -4px
+    &
+      position: relative
+      margin-top: -4px
+    &:hover .table__bedroom
+      visibility: visible
+      opacity: 1
   &__additional
     visibility: hidden
     opacity: 0
     z-index: 2
     transition: 0.3s
-  &__additional.active
-    visibility: visible
-    opacity: 1
 .table
   &__elem
     margin-top: 29px
@@ -59,6 +58,9 @@
     &
       margin-top: 29px
       margin-bottom: 32px
+    &:hover .sidebar__additional
+      visibility: visible
+      opacity: 1
     &--label
       margin-bottom: 17px
     &--arrow

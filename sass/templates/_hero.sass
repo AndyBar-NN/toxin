@@ -86,21 +86,21 @@
       position: absolute
       right: 16px
       bottom: 19px
+    &:hover .table__room
+      visibility: visible
+      opacity: 1
 
   &__room                        // dropdown guest
     visibility: hidden
     opacity: 0
-    max-width: 318px
     width: 100%
     border: 1px solid $grey
     border-top: none
     position: absolute
+    top: 64px
     background: white
     z-index: 2
     transition: 0.3s
-  &__room.active               // open drop js
-    visibility: visible
-    opacity: 1
   &__compact, &__bedroom
     visibility: hidden
     opacity: 0
@@ -189,7 +189,7 @@
   border: 1px solid $silver
   border-radius: 4px
   margin-top: 7px
-.guest
+.guest, .bedroom
   margin-top: 5px
   padding: 14px 10px 12px 12px
   border: 1px solid $silver
@@ -209,6 +209,8 @@
     margin-top: 29px
     padding: 15px 15px
     color: #FFF
+  &__button
+    display: block
   &__arrow
     position: absolute
     right: 13px
