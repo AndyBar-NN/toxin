@@ -1,3 +1,4 @@
+'use strict'
 const loginName = document.querySelector('.menu__name'),
       getRooms = document.querySelector('#getRooms');
 

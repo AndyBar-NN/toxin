@@ -22,11 +22,11 @@
   <script src="https://www.gstatic.com/firebasejs/8.2.8/firebase-database.js" defer></script>
 
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js" defer></script>
-  <script src="js/datepicker.js" defer></script>
+  <script src="js/plagins/datepicker.js" defer></script>
 
   <script src="https://unpkg.com/swiper/swiper-bundle.min.js" defer></script>
-  <script src="js/jquery.mask.min.js" defer></script>
-  <script src="js/log.js" type="module" defer></script>
+  <script src="js/plagins/jquery.mask.min.js" defer></script>
+  <script src="js/modules/log.js" type="module" defer></script>
 </head>
 <body>
 

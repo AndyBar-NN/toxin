@@ -1,3 +1,4 @@
+'use strict'
 export const autorize = () => {
   // Your web app's Firebase configuration
   var firebaseConfig = {
@@ -20,13 +21,6 @@ export const autorize = () => {
         exitElem = document.querySelector('.menu__exit'),
         nameElem = document.querySelector('.menu__name--login');
   //
-  const listUsers = [{
-    email: 'hrusha@mail.com',
-    password: 'qwerty',
-    displayName: 'hrusha',
-    surname: 'pig'
-  }];
-
   const setUsers = {
     user: null,
     initUser(handler) {
@@ -39,62 +33,8 @@ export const autorize = () => {
         if (handler) handler();
       });
     },
-    logIn(email, password, handler) {
-      if (!validEmail.test(email)) { // test - проверяет совпадения
-        alert("Введен неправильный email");
-        return;
-      }
-      firebase.auth()
-        .signInWithEmailAndPassword(email, password)
-        .then(openHero)
-        .then(handler)
-        .catch(err => {
-          const errCode = err.code;
-          const errMessage = err.message;
-          if (errCode === 'auth/wrong-password') {
-            console.log(errMessage);
-            alert('Неверный пароль');
-          } else if (errCode === 'auth/user-not-found') {
-            console.log(errMessage);
-            alert('Пользователь не найден');
-          } else {
-            alert(errMessage);
-          }
-          console.log(err);
-        });
-    },
     logOut() {
       firebase.auth().signOut();
-    },
-    regIn(email, password, handler) {
-      if (!validEmail.test(email)) { // test - проверяет совпадения
-        alert("Введен неправильный email");
-        return;
-      }
-      if (!email.trim() || !password.trim()) { // trim - убирает пробелы по бокам
-        alert("Введите данные");
-        return;
-      }
-      firebase.auth()
-        .createUserWithEmailAndPassword(email, password)
-        .then(openHero)
-        .then(() => {
-          this.editUser(email.substring(0, email.indexOf('@')), handler);
-        })
-        .catch(err => {
-          const errCode = err.code;
-          const errMessage = err.message;
-          if (errCode === 'auth/weak-password') {
-            console.log(errMessage);
-            alert('Слабый пароль');
-          } else if (errCode === 'auth/email-already-in-use') {
-            console.log(errMessage);
-            alert('Этот email уже используется');
-          } else {
-            alert(errMessage);
-          }
-          console.log(err);
-        });
     },
     editUser(displayName, handler) {
       const user = firebase.auth().currentUser;

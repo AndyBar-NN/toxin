@@ -22,10 +22,10 @@
   <script src="https://www.gstatic.com/firebasejs/8.2.8/firebase-database.js" defer></script>
 
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js" defer></script>
-  <script src="js/datepicker.js" defer></script>
+  <script src="js/plagins/datepicker.js" defer></script>
 
   <script src="https://unpkg.com/swiper/swiper-bundle.min.js" defer></script>
-  <script src="js/jquery.mask.min.js" defer></script>
+  <script src="js/plagins/jquery.mask.min.js" defer></script>
   <script src="js/room.js" type="module" defer></script>
 </head>
 <body>
@@ -37,13 +37,13 @@
   <div class="main__room">
     <div class="room__selected">
       <div class="room__background">
-        <img src="img/room/image.1.1.jpg" alt="">
+        <!-- <img src="img/room/image.1.1.jpg" alt="">
         <div class="room__background--col">
           <img class="room__background--small" src="img/room/image.1.2.jpg" alt="">
           <img class="room__background--small" src="img/room/image.1.3.jpg" alt="">
-        </div>
+        </div> -->
       </div>
-      <!-- /.sidebar__data -->
+      <!-- /.room__background -->
       <div class="container">
         <div class="room__description">
           <div class="description__col1">
@@ -182,7 +182,7 @@
             <div class="description__table">
               <form action="#" class="table__form">
                 <div class="room__fees">
-                  <div class="room__data--number">
+                  <!-- <div class="room__data--number">
                     <span class="room__number--elem">№</span>
                     <span class="room__number--big">888</span>
                     <span class="room__luks">люкс</span>
@@ -190,8 +190,9 @@
                   <div class="room__data--cash">
                     <span class="room__cash">9 990₽</span>
                     <span class="room__day">в сутки</span>
-                  </div>
+                  </div> -->
                 </div>
+                <!-- /.room__fees -->
                 <div class="table__data">
                   <div class="table__arrival">
                     <label for="arrival" class="table__label">Прибытие</label>
@@ -215,25 +216,25 @@
                     <div class="table__adult">
                       <p class="table__heading">Взрослые</p>
                       <div class="table__buttons">
-                        <button class="table__minus">-</button>
+                        <button class="table__minus men__minus">-</button>
                         <p id="men" class="table__number">0</p>
-                        <button class="table__plus">+</button>
+                        <button class="table__plus men__plus">+</button>
                       </div>
                     </div>
                     <div class="table__children">
                       <p class="table__heading">Дети</p>
                       <div class="table__buttons">
-                        <button class="table__minus">-</button>
+                        <button class="table__minus child__minus">-</button>
                         <p id="child" class="table__number">0</p>
-                        <button class="table__plus">+</button>
+                        <button class="table__plus child__plus">+</button>
                       </div>
                     </div>
                     <div class="table__baby">
                       <p class="table__heading">Младенцы</p>
                       <div class="table__buttons">
-                        <button class="table__minus">-</button>
+                        <button class="table__minus baby__minus">-</button>
                         <p id="baby" class="table__number">0</p>
-                        <button class="table__plus">+</button>
+                        <button class="table__plus baby__plus">+</button>
                       </div>
                     </div>
                     <div class="button__interact">
@@ -261,7 +262,7 @@
                   <span class="description__title">Итого</span>
                   <span class="description__title">38 081₽</span>
                 </div>
-                <button id="getRooms" class="search description__search">Забронировать<img
+                <button id="getIndex" class="search description__search">Забронировать<img
                     src="img/icons/arrow_white.svg" class="search__arrow" alt=""></button>
               </form>
               <!-- /.table__form -->
@@ -272,9 +273,9 @@
         </div>
         <!-- /.room__description -->
       </div>
-      <!-- /.room__selected -->
+      <!-- /.container -->
     </div>
-    <!-- /.container -->
+    <!-- /.room__selected -->
   </div>
   <!-- /.main__room -->
 

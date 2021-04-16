@@ -1,3 +1,4 @@
+'use strict'
 import { main } from "./main.js";
 
 // noUiSlider
@@ -20,8 +21,8 @@ nonLinearStepSlider.noUiSlider.on('update', function (values) {
 });
 
 //
-const tableBedroom = document.querySelector('.table__bedroom');
-
+const tableBedroom = document.querySelector('.table__bedroom'),
+      roomsElem = document.querySelector('.rooms__elem');
 let countConveniences = document.querySelector('.conveniences'),
     bedroom = document.querySelector('#bedroom'),
     bed = document.querySelector('#bed'),
@@ -44,6 +45,70 @@ function itemBed() {
   }
 }
 
+//
+const getData = async function(url) {
+  const response = await fetch(url); // запрос
+
+  if (!response.ok) {
+    throw new Error(`Ошибка ${url}, статус ошибки ${response.status}`);
+  }
+
+  return await response.json();
+};
+
+function createRooms(item) {
+  const { image, number, luks, price, star, feedback, room } = item;
+
+  const num = `
+    <a class="room" data-number="${room}">
+      <div class="room__img">
+        <img class="room__img--elem" src="${image}" alt="">
+        <div class="room__left"></div>
+        <div class="room__right"></div>
+      </div>
+      <div class="room__data">
+        <div class="room__data--number">
+          <span class="room__number--elem">№</span>
+          <span class="room__number">${number}</span>
+          <span class="room__luks">${luks}</span>
+        </div>
+        <div class="room__data--cash">
+          <span class="room__cash">${price}₽</span>
+          <span class="room__day">в сутки</span>
+        </div>
+      </div>
+      <hr class="room__data--content">
+      </hr>
+      <div class="room__rating">
+        <div class="room__rating--star">
+          <img src="${star}" alt="" class="star">
+        </div>
+        <div class="room__rating--comment">
+          <div class="room__comment">${feedback}</div>
+          <div class="room__comment--elem">Отзывов</div>
+        </div>
+      </div>
+    </a>
+  `;
+
+  roomsElem.insertAdjacentHTML('beforeend', num);
+}
+
+function openRoom(e) {
+  const room = e.target.closest('.room');
+
+  if (room) {
+    getData(`./db/${room.dataset.number}`).then(function (data) {
+      data.forEach(() => {
+        document.location.href = "room.php";
+      });
+    });
+  }
+}
+
+roomsElem.addEventListener('click', openRoom);
+
+//
 tableBedroom.addEventListener('click', (e) => {
   e.preventDefault();
   if (e.target && e.target.matches("button.bedroom__plus")) {
@@ -96,4 +161,9 @@ tableBedroom.addEventListener('click', (e) => {
   }
 });
 
+getData('./db/rooms.json').then(function (data) { // then обрабатывает промисы
+  data.forEach(createRooms);
+});
+
+//
 main();

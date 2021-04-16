@@ -1,3 +1,4 @@
+'use strict'
 // Your web app's Firebase configuration
 var firebaseConfig = {
   apiKey: "AIzaSyCo8lNJxGHjYwyLdjWchgUPOU7kbgbUZMQ",
@@ -18,13 +19,6 @@ const logRegBtn = document.querySelector('.buttons'),
       passwordInput = document.querySelector('.password'),
       formReg = document.querySelector('.form__reg');
 //
-const listUsers = [{
-  email: 'hrusha@mail.com',
-  password: 'qwerty',
-  displayName: 'hrusha',
-  surname: 'pig'
-}];
-
 const setUsers = {
   user: null,
   initUser(handler) {
@@ -36,33 +30,6 @@ const setUsers = {
       }
       if (handler) handler();
     });
-  },
-  logIn(email, password, handler) {
-    if (!validEmail.test(email)) { // test - проверяет совпадения
-      alert("Введен неправильный email");
-      return;
-    }
-    firebase.auth()
-      .signInWithEmailAndPassword(email, password)
-      .then(openHero)
-      .then(handler)
-      .catch(err => {
-        const errCode = err.code;
-        const errMessage = err.message;
-        if (errCode === 'auth/wrong-password') {
-          console.log(errMessage);
-          alert('Неверный пароль');
-        } else if (errCode === 'auth/user-not-found') {
-          console.log(errMessage);
-          alert('Пользователь не найден');
-        } else {
-          alert(errMessage);
-        }
-        console.log(err);
-      });
-  },
-  logOut() {
-    firebase.auth().signOut();
   },
   regIn(email, password, handler) {
     if (!validEmail.test(email)) { // test - проверяет совпадения
@@ -104,21 +71,6 @@ const setUsers = {
   },
 };
 
-const toggleAuthDom = () => {
-  const user = setUsers.user;
-  console.log('user: ', user);
-  if (user) {
-    logRegBtn.style.display = 'none';
-    loginName.classList.add('active');
-    nameElem.textContent = user.displayName;
-  } else {
-    loginName.classList.remove('active');
-    logRegBtn.style.display = 'inline';
-  }
-};
-
-setUsers.initUser(toggleAuthDom);
-
 //
 function openHero() {
   document.location.href = "index.php";
@@ -127,7 +79,7 @@ function openHero() {
 const initReg = () => {
   formReg.addEventListener('submit', (e) => {
     e.preventDefault();
-    setUsers.regIn(loginInput.value, passwordInput.value, toggleAuthDom);
+    setUsers.regIn(loginInput.value, passwordInput.value);
     formReg.reset();
   });
 };

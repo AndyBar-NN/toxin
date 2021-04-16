@@ -1,4 +1,5 @@
-import { autorize } from "./autorize.js";
+'use strict'
+import { autorize } from "./modules/autorize.js";
 
 export const main = () => {
   // calendar
@@ -51,78 +52,81 @@ export const main = () => {
   // dropdown guest
   const tableRoom = document.querySelector('.table__room'),
         clearBtn = document.querySelector('#clear');
-  let countGuest = document.querySelector('.guest');
+  let countGuest = document.querySelectorAll('.guest');
   let men = document.querySelector('#men'),
       child = document.querySelector('#child'),
       baby = document.querySelector('#baby');
 
-  let mens = 0,
-      childrens = 0,
-      babies = 0;
+  let sum = {
+    mens: 0,
+    childrens: 0,
+    babies: 0
+  };
 
   // adding guests
-
   function itemGuest() {
-    countGuest.value = mens + childrens + babies;
-    if (countGuest.value == 1) {
-      countGuest.value += ' гость';
-    } else if (countGuest.value > 1 && countGuest.value <= 4) {
-      countGuest.value += ' гостя';
-    } else if (countGuest.value > 4) {
-      countGuest.value += ' гостей';
-    } else {
-      countGuest.value = '';
-    }
+    countGuest.forEach((item) => {
+      item.value = sum.mens + sum.childrens + sum.babies;
+      if (item.value == 1) {
+        item.value += ' гость';
+      } else if (item.value > 1 && item.value <= 4) {
+        item.value += ' гостя';
+      } else if (item.value > 4) {
+        item.value += ' гостей';
+      } else {
+        item.value = '';
+      }
+    });
   }
 
   tableRoom.addEventListener('click', (e) => {
     e.preventDefault();
     if (e.target && e.target.matches("button.men__plus")) {
-      if (mens >= 4) {
-        return mens;
+      if (sum.mens >= 4) {
+        return sum.mens;
       }
-      mens++;
-      men.textContent = mens;
+      sum.mens++;
+      men.textContent = sum.mens;
       itemGuest();
     }
     if (e.target && e.target.matches("button.men__minus")) {
-      if (mens <= 0) {
-        return mens;
+      if (sum.mens <= 0) {
+        return sum.mens;
       }
-      mens--;
-      men.textContent = mens;
+      sum.mens--;
+      men.textContent = sum.mens;
       itemGuest();
     }
     if (e.target && e.target.matches("button.child__plus")) {
-      if (childrens >= 2) {
-        return childrens;
+      if (sum.childrens >= 2) {
+        return sum.childrens;
       }
-      childrens++;
-      child.textContent = childrens;
+      sum.childrens++;
+      child.textContent = sum.childrens;
       itemGuest();
     }
     if (e.target && e.target.matches("button.child__minus")) {
-      if (childrens <= 0) {
-        return childrens;
+      if (sum.childrens <= 0) {
+        return sum.childrens;
       }
-      childrens--;
-      child.textContent = childrens;
+      sum.childrens--;
+      child.textContent = sum.childrens;
       itemGuest();
     }
     if (e.target && e.target.matches("button.baby__plus")) {
-      if (babies >= 2) {
-        return babies;
+      if (sum.babies >= 2) {
+        return sum.babies;
       }
-      babies++;
-      baby.textContent = babies;
+      sum.babies++;
+      baby.textContent = sum.babies;
       itemGuest();
     }
     if (e.target && e.target.matches("button.baby__minus")) {
-      if (babies <= 0) {
-        return babies;
+      if (sum.babies <= 0) {
+        return sum.babies;
       }
-      babies--;
-      baby.textContent = babies;
+      sum.babies--;
+      baby.textContent = sum.babies;
       itemGuest();
     }
   });
@@ -130,10 +134,10 @@ export const main = () => {
   // clear
   clearBtn.addEventListener('click', (e) => {
     e.preventDefault();
-    countGuest.value = '';
-    mens = 0;
-    childrens = 0;
-    babies = 0;
+    countGuest.forEach(item => item.value = '');
+    sum.mens = 0;
+    sum.childrens = 0;
+    sum.babies = 0;
     men.textContent = 0;
     child.textContent = 0;
     baby.textContent = 0;
@@ -141,3 +145,4 @@ export const main = () => {
 };
 
 autorize();
+main();

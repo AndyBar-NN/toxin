@@ -1089,8 +1089,6 @@ button {
   justify-content: space-between; }
 
 .room__rating--star {
-  display: flex;
-  justify-content: space-between;
   width: 117px; }
 
 .room__rating--comment {

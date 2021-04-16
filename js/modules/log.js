@@ -1,3 +1,4 @@
+'use strict'
 // Your web app's Firebase configuration
 var firebaseConfig = {
   apiKey: "AIzaSyCo8lNJxGHjYwyLdjWchgUPOU7kbgbUZMQ",
@@ -18,13 +19,6 @@ const logRegBtn = document.querySelector('.buttons'),
       passwordInput = document.querySelector('.password'),
       formLog = document.querySelector('.form__log');
 //
-const listUsers = [{
-  email: 'hrusha@mail.com',
-  password: 'qwerty',
-  displayName: 'hrusha',
-  surname: 'pig'
-}];
-
 const setUsers = {
   user: null,
   initUser(handler) {
@@ -61,63 +55,7 @@ const setUsers = {
         console.log(err);
       });
   },
-  logOut() {
-    firebase.auth().signOut();
-  },
-  regIn(email, password, handler) {
-    if (!validEmail.test(email)) { // test - проверяет совпадения
-      alert("Введен неправильный email");
-      return;
-    }
-    if (!email.trim() || !password.trim()) { // trim - убирает пробелы по бокам
-      alert("Введите данные");
-      return;
-    }
-    firebase.auth()
-      .createUserWithEmailAndPassword(email, password)
-      .then(openHero)
-      .then(() => {
-        this.editUser(email.substring(0, email.indexOf('@')), handler);
-      })
-      .catch(err => {
-        const errCode = err.code;
-        const errMessage = err.message;
-        if (errCode === 'auth/weak-password') {
-          console.log(errMessage);
-          alert('Слабый пароль');
-        } else if (errCode === 'auth/email-already-in-use') {
-          console.log(errMessage);
-          alert('Этот email уже используется');
-        } else {
-          alert(errMessage);
-        }
-        console.log(err);
-      });
-  },
-  editUser(displayName, handler) {
-    const user = firebase.auth().currentUser;
-    if (displayName) {
-      user.updateProfile({
-        displayName
-      }).then(handler);
-    }
-  },
 };
-
-const toggleAuthDom = () => {
-  const user = setUsers.user;
-  console.log('user: ', user);
-  if (user) {
-    logRegBtn.style.display = 'none';
-    loginName.classList.add('active');
-    nameElem.textContent = user.displayName;
-  } else {
-    loginName.classList.remove('active');
-    logRegBtn.style.display = 'inline';
-  }
-};
-
-setUsers.initUser(toggleAuthDom);
 
 //
 function openHero() {
@@ -127,7 +65,7 @@ function openHero() {
 const initLog = () => {
   formLog.addEventListener('submit', (e) => {
     e.preventDefault();
-    setUsers.logIn(loginInput.value, passwordInput.value, toggleAuthDom);
+    setUsers.logIn(loginInput.value, passwordInput.value);
     formLog.reset();
   });
 };
