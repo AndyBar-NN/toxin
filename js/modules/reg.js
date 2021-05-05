@@ -73,7 +73,7 @@ const setUsers = {
 
 //
 function openHero() {
-  document.location.href = "index.php";
+  document.location.href = "index.html";
 }
 
 const initReg = () => {

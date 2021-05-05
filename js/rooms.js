@@ -100,7 +100,7 @@ function openRoom(e) {
   if (room) {
     getData(`./db/${room.dataset.number}`).then(function (data) {
       data.forEach(() => {
-        document.location.href = "room.php";
+        document.location.href = "room.html";
       });
     });
   }

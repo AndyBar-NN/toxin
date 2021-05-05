@@ -7,6 +7,6 @@ getRooms.addEventListener('click', (e) => {
   if (!loginName.classList.contains('active')) {
     alert('Пожалуйста войдите в аккаунт');
   } else {
-    document.location.href = "rooms.php";
+    document.location.href = "rooms.html";
   }
 });

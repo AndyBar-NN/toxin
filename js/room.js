@@ -14,7 +14,7 @@ function sendForm() {
       inputEnd.value &&
       inputGuest.value) {
     tableForm.reset();
-    document.location.href = "index.php";
+    document.location.href = "index.html";
   } else {
     alert('Не указана дата или число гостей');
   }
